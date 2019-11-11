@@ -1,0 +1,28 @@
+int expo(int a,int b){
+    if(b==0)
+    return 1;
+    int k = expo(a,b/2);
+    if(b&1){
+        return (((k*k)%hell)*a)%hell;
+    }
+    else
+        return (k*k)%hell;
+}
+int inv(int a){
+	return expo(a,hell-2);
+}
+void computefact(){
+	fact[0]=1;
+	rep(i,1,N){
+		fact[i]=(fact[i-1]*i)%hell;
+	}
+	invfact[N-1]=inv(fact[N-1]);
+	repd(i,N-2,0){
+		invfact[i]=(i+1)*invfact[i+1];
+		invfact[i]%=hell;
+	}
+}
+
+int ncr(int n,int r){
+	return (((fact[n]*invfact[r])%hell)*invfact[x-r])%hell;
+}

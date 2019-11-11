@@ -1,0 +1,19 @@
+Policy Based DS
+
+This is a set with additional functionality of 
+i) finding kth largest element or element at index k
+ii) finding no of elements strictly lesser than given key
+
+Header files
+#include<ext/pb_ds/assoc_container.hpp>
+#include<ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+using namespace std;
+template <typename T>
+using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+
+ordered_set x;
+
+x.find_by_order(k) //kth largest element
+x.order_of_key(key) //no.of elements strictly lesser then key
+in O(log n)

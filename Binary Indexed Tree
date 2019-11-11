@@ -1,0 +1,38 @@
+Binary Indexed Tree
+	It is used to prefix opertation on a array.
+	The operation has to have inverse.
+	Eg. addition that has subtraction as its inverse. 
+	O(logn) for updata and O(logn) for query
+
+BIT for prefix Sum
+
+
+
+
+Data Structures Used :
+ll bit[n+1]
+
+//Adds val to element at arr[index]
+
+void update(ll index,ll val)
+{
+	while(index <= n)
+	{
+		bit[index] += val;
+		index += (index & (-index));
+	}
+}
+
+//Finds prefix sum till given index
+ll query(ll index)
+{
+	ll ans=0;
+	while(index>0)
+	{
+		ans += bit[index];
+		index -= (index & (-index));
+	}
+	return ans;
+}
+for(i=0;i<n;i++)
+	update(i+1,v[i]);	

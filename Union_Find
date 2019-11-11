@@ -1,0 +1,30 @@
+//initialisation
+
+par[i]=i;
+
+
+ll find(ll i)
+{
+	while(par[i]!=i)
+	{
+		par[i] = par[par[i]];
+		i = par[i];
+	}
+	return i;
+}
+
+void Union(ll a,ll b)
+{
+	a = find(a);
+	b = find(b);
+	if(size[a]<=size[b])
+	{
+		par[a]=b;
+		size[b]+=size[a];
+	}
+	else
+	{
+		par[b]=a;
+		size[a]+=size[b];
+	}
+}

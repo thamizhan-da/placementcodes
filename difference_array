@@ -1,0 +1,14 @@
+Range Update and no query
+
+Use difference array;
+
+for update in l,r by x (Update in O(1))
+d[l]+=x;
+d[r+1]-=x;
+
+Query in O(n)
+
+for(i=1 to n)
+	d[i]+=d[i-1];
+for(i=0 to n-1)
+	a[i]+=d[i];	
