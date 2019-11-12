@@ -14,7 +14,7 @@ int main()
 		right = min(n,i+loc[i]);
 		range[left] = max(right,range[left]);
 	}
-	next = 1, right=range[1],count=0;
+	next = 0, right=range[1],count=0;
 	for(i=1;i<=n;i++)
 	{
 		next = max(next,range[i]);
