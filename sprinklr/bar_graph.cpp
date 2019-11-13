@@ -3,34 +3,27 @@ using namespace std;
 
 int main()
 {
-	int n,k;
+	int n,k,diff;
 	cin>>n>>k;
-	deque<int> q(n);
+	vector<int> v(n);
 	int i;
 	for(i=0;i<n;i++)
-		cin>>q[i];
-	int a,b;
-	// int end = n-1;
-	while(k--)
+		cin>>v[i];
+	multiset<int> s;
+	int ans=INT_MAX,len=n-k;
+	for(i=1;i<len;i++)
 	{
-		int end = q.size()-1;
-		a = q[1]-q[0];
-		b = q[end]-q[end-1];
-		if(a>b)
-		{
-			q.pop_front();
-			// start++;
-		}
-		else
-		{
-			q.pop_back();
-			// end--;
-		}
-		// cout<<a<<" "<<b<<" ";
-		// cout<<start<<" "<<end<<endl;
+		diff = v[i]-v[i-1];
+		s.insert(diff);
 	}
-	int ans=0;
-	for(i=1;i<q.size();i++)
-		ans = max(ans,q[i]-q[i-1]);
-	cout<<ans;
+	ans = min(ans,*(s.rbegin()));
+	for(i=len;i<n;i++)
+	{
+		diff = v[i]-v[i-1];
+		s.insert(diff);
+		diff = v[i-len+1]-v[i-len];
+		s.erase(s.find(diff));
+		ans = min(ans,*(s.rbegin()));
+	}
+	cout<<ans<<endl;
 }

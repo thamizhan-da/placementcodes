@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+	#include <bits/stdc++.h>
 using namespace std;
 #define hell 1000000007
 #define ll long long
@@ -33,7 +33,7 @@ void preprocess()
 	}
 	invfact[1000000] = inverse(fact[1000000]);
 	for(i=999999;i>=1;i--)
-	{
+	{	
 		invfact[i] = (i+1)*invfact[i+1];
 		invfact[i]%=hell;
 	}
